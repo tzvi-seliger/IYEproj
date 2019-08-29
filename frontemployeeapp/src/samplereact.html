@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <!-- <script src="samplereact.js"></script> -->
+    <script src="styles.js"></script>
+    <script type="text/babel">
+        'use strict';
+console.log("react component started")
+const e = React.createElement;
+
+class RegisterLink extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { registered: false };
+    }
+
+
+    render() {
+        return (
+            <div id="register" style = {registerId}>
+                <a href="register.html" style = {registerA}>Register Now!</a>
+            </div>
+          );
+    }
+}
+
+
+            ReactDOM.render(e(RegisterLink), document.querySelector('#root'));
+        </script>
+</body>
+
+</html>

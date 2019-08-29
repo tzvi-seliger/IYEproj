@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        function carousel(arr){
+            let index = 0
+            let myInterval = setInterval(function () {
+                if (index >= arr.length) {
+                    index = 0
+                }
+                document.getElementById("root").innerHTML = `<img src = "${arr[index]}"/>`
+                index++
+            }, 600)
+        }
+        function carouselTest(arr) {
+            let index = 0
+            let myInterval = setInterval(function () {
+                if (index >= arr.length - 1) {
+                    clearInterval(myInterval)
+                }
+                console.log(arr[index])
+                index++
+            }, 2000)
+        }
+        carousel(["x.png", "hamburger.png"])
+        carouselTest(["pic1", "pic2", "pic3"])
+
+    </script>
+</body>
+
+</html>

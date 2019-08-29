@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="index.css" />
+    <style>
+        html,
+        body,
+        #root {
+            width: 100%;
+            height: 100%;
+        }
+
+        thead {
+            border: 2px solid grey;
+            padding: 1%;
+        }
+
+        #featuresList {
+            margin: 10%;
+            width: 80%;
+            height: 50%;
+            text-align: center;
+            color: green;
+        }
+
+        table {
+            border: 3px solid orange;
+            padding: 2%;
+        }
+
+        div {
+            display: inline-block;
+            margin-left: 1%;
+        }
+
+        /* .boolContainer {
+            width: 50%;
+            display: inline-block;
+            margin-left: 1%;
+        } */
+
+        .hastrue {
+            border: 1px solid white;
+            margin-left: 10px;
+            background: #a6ffb0;
+            width: 20%;
+            height: 20%;
+        }
+
+        .hasfalse {
+            border: 1px solid white;
+            margin-left: 10px;
+            background: white;
+            width: 20%;
+            height: 20%;
+        }
+
+        tr {
+            width: 100%;
+            font-family: Arial;
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+        .featureName {
+            margin-left: 10px;
+            width: 20%;
+            height: 20%;
+            border: 1px solid white;
+            text-align: center;
+            /* display: inline-block; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        
+            <div id="header">
+                    <div class="fifthhead box">
+                        <p class="center">
+                            <a href="index.html">
+                                <img src="6284bb47-eff3-4cc6-acdd-8ba1d6e9bd15_200x200.png">
+                            </a>
+                        </p>
+                    </div>
+                    <div class="fifthhead box">
+                            <a class = "center full regtext" href ="account.html">Account</a>
+                        </div>
+                    <div class="fifthhead box">
+                        <a class = "center full regtext" href ="pricing.html">Pricing</a>
+                    </div>
+                    <div class="fifthhead box">
+                        <a class="center full regtext">Login</a>
+                    </div>
+                </div>
+        
+        <table id="featuresList">
+            <thead>
+                <tr>
+                    <td>Description</td>
+                    <td>Basic</td>
+                    <td>Standard</td>
+                    <td>Premium</td>
+                </tr>
+            </thead>
+            <tbody id="featuretablebody">
+            </tbody>
+        </table>
+    </div>
+    <script>
+
+        console.log(document)
+
+        var features = [
+            {
+                name: "15 employee accounts included",
+                inBasic: true,
+                inStandard: true,
+                inPremium: true,
+            },
+            {
+                name: "40 employee accounts included",
+                inBasic: false,
+                inStandard: true,
+                inPremium: true,
+            },
+            {
+                name: "100 employee accounts included",
+                inBasic: false,
+                inStandard: false,
+                inPremium: true,
+            },
+            {
+                name: "Full Support",
+                inBasic: false,
+                inStandard: false,
+                inPremium: true,
+            },
+        ]
+        var returnEl = function (elType, className, ) {
+            var el = document.createElement(elType)
+            if (className) el.setAttribute("class", className)
+            return el
+        }
+
+        features.forEach(function (item) {
+            var tr = returnEl("tr")
+            var attach
+            // var containerDiv = returnEl("div", "boolContainer")
+            for (let prop in item) {
+
+                if (prop === "name") {
+                    var td = returnEl("td", "featureName")
+                    td.innerHTML = item[prop]
+                    tr.appendChild(td)
+                } else {
+                    console.log(prop)
+                    var hasFeature = item[prop]
+                    var className = "has" + hasFeature
+                    console.log(className)
+                    var td = returnEl("td", className)
+
+                    tr.appendChild(td)
+                }
+            }
+            // tr.appendChild(containerDiv)
+            document.getElementById("featuretablebody").appendChild(tr)
+        })
+
+
+    </script>
+
+</body>
+
+</html>

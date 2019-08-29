@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="profile.css" />
+</head>
+
+<body>
+    <div id="root">
+        <div id="personalInfo">
+            <p id="name"></p>
+            <p id="address"></p>
+            <p id="email"></p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td> Skill Name</td>
+                    <td>Description</td>
+                </tr>
+            </thead>
+            <tbody id = "skillbody"></tbody>
+        </table>
+    </div>
+
+    <script src="profile.js"></script>
+    <script>
+
+        //display each users information
+        users.forEach(user => {
+            displayPersonalInfo(user)  
+            displaySkills(user)     
+         });
+
+    </script>
+</body>
+
+</html>

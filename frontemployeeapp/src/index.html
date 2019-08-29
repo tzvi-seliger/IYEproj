@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
+    <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="index.css" />
+    <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+    </style>
+</head>
+
+<body class="regtext genericstyle">
+
+    <div id="container">
+
+        <!-- header component  -->
+        <div id="header">
+            <div class="fifthhead box">
+                <p class="center">
+                    <a href="index.html">
+                        <img src="6284bb47-eff3-4cc6-acdd-8ba1d6e9bd15_200x200.png">
+                    </a>
+                </p>
+            </div>
+            <div class="fifthhead box">
+                <a class="center full regtext" href="account.html">Account</a>
+            </div>
+            <div class="fifthhead box">
+                <a class="center full regtext" href="pricing.html">Pricing</a>
+            </div>
+            <div class="twofifthhead box" id="loginregister"></div>
+        </div>
+        <!-- end header component -->
+
+        <div id="body">
+            <div class="quarter"></div>
+            <div class="half">
+
+                <p class="maintext box">
+                    <h1 class="box headertext">
+                        The Employee Development Platform
+                        <br>
+                        <br>
+                    </h1>
+                    <h2 class="box">
+                        Get the most from your employees.
+                        <br> Hire them, Train Them, Reap the benefits.
+                        <br> Track progress easily.
+                    </h2>
+                </p>
+
+            </div>
+
+            <div class="box emailcontainer">
+                <input id="email" placeholder="Email" />
+                <button id="startbutton">Start</button>
+                <div id="addemail"></div>
+            </div>
+
+            <div class="quarter"></div>
+
+            <div id="footer">
+                <p>Contact Info goes here</p>
+            </div>
+
+        </div>
+    </div>
+    <script src="styles.js"></script>
+    <script>
+
+        document.querySelector("#startbutton").addEventListener("click", function () {
+            !(document.querySelector("#email").value) == "" ? window.location = "start.html" : err()
+        })
+
+        function err() {
+            document.querySelector("#email").style.border = "1px solid red"
+        }
+
+    </script>
+    <script>
+
+    'use strict';
+    var isRegistered = false;
+    console.log("react component started")
+    const e = React.createElement;
+
+    class RegisterLink extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { registered: false };
+        } 
+        render() {
+            return (
+                    <a style={registerId} className = "center full" href="register.html">Register!</a>
+              );
+        }
+    }    
+
+    class LoginForm extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { registered: false };
+        } 
+        render() {
+            return (
+                    <form style={loginStyle}>
+                        <label style={labelStyle}> Username</label>
+                        <input type='text' style={inputStyle} placeholder="Username"/>
+                        <label style={labelStyle}>Password</label>
+                        <input type='password' style={inputStyle} placeholder="password"/>
+                        <input type='submit' style={inputStyle} value="Login"/>
+                    </form>
+              );
+        }
+    }
+
+    class LoginRegister extends React.Component {
+        constructor(props) {
+            super(props);
+        } 
+        render() {
+            return isRegistered ? <LoginForm/> : <RegisterLink/>;
+        }
+    }
+
+    ReactDOM.render(e(LoginRegister), document.querySelector('#loginregister'));
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#container {
+    width: 100%;
+    height: 100%;
+}
+
+.full {
+    width: 100%;
+    height: 100%;
+}
+
+#header,
+#footer {
+    width: 100%;
+    height: 10%;
+    box-shadow: 0px 12px 12px #adffd1;
+    /* border: .1px solid black; */
+}
+
+#body {
+    height: 78%;
+    width: 100%;
+}
+
+.third {
+    display: inline-block;
+    width: 32.7%;
+    height: 100%;
+    /* border: .1px solid black; */
+    vertical-align: top;
+    padding: 10%;
+}
+
+.half {
+    display: inline-block;
+    width: 49.5%;
+    /* height: 100%; */
+    /* border: .1px solid black; */
+    vertical-align: top;
+    padding: 10%;
+}
+
+.quarter {
+    display: inline-block;
+    width: 24.5%;
+    /* border: .1px solid black; */
+    vertical-align: top;
+    padding: 3%;
+}
+
+.thirdheight {
+    width: 100%;
+    height: 32%;
+}
+
+.fifthhead {
+    display: inline-block;
+    width: 19%;
+    height: 100%;
+}
+
+.twofifthhead {
+    display: inline-block;
+    margin-top: 1.5%;
+    width: 38%;
+    height: 100%;
+}
+
+.threefifthhead {
+    display: inline-block;
+    width: 50%;
+    height: 60%;
+    border: 1px solid orange;
+}
+
+.headertext {
+    font-weight: bold;
+    font-size: 2.5vw;
+}
+
+.box {
+    /* border: .1px solid black; */
+    vertical-align: top;
+    text-align: center;
+
+}
+
+.center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.maintext,
+.regtext {
+    font-size: 1.5vw;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.genericstyle {
+    background: white;
+}
+
+.emailcontainer {
+    border: none;
+}
+
+.emailcontainer input,
+.emailcontainer button,
+button {
+    color: purple;
+    border: none;
+    padding: .5%;
+    border-radius: 10px;
+    background: white;
+}
+
+.emailcontainer button,
+.emailcontainer input {
+    border: 3px solid purple;
+    color: purple;
+}
+
+.emailcontainer input[placeholder] {
+    color: purple;
+}

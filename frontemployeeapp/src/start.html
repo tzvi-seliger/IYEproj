@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="reset.css" />
+    <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+        * {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        html,
+        body,
+        #container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .full {
+            width: 100%;
+            height: 100%;
+        }
+
+        #header,
+        #footer {
+            width: 100%;
+            height: 10%;
+            /* border: .1px solid black; */
+        }
+
+        #body {
+            height: 78%;
+            width: 100%;
+        }
+
+        .third {
+            display: inline-block;
+            width: 32.7%;
+            height: 100%;
+            /* border: .1px solid black; */
+            vertical-align: top;
+            padding: 10%;
+        }
+
+        .half {
+            display: inline-block;
+            width: 49.5%;
+            height: 100%;
+            /* border: .1px solid black; */
+            vertical-align: top;
+            padding: 10%;
+        }
+
+        .quarter {
+            display: inline-block;
+            width: 24.5%;
+            height: 100%;
+            /* border: .1px solid black; */
+            vertical-align: top;
+            padding: 10%;
+        }
+
+        .thirdheight {
+            width: 100%;
+            height: 32%;
+        }
+
+        .fifthhead {
+            display: inline-block;
+            width: 19%;
+            height: 100%;
+        }
+
+        .headertext {
+            font-weight: bold;
+            font-size: 2.5vw;
+        }
+
+        .box {
+            /* border: .1px solid black; */
+            vertical-align: top;
+            text-align: center;
+
+        }
+
+        .center {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .maintext,
+        .regtext {
+            font-size: 1.5vw;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        .genericstyle {
+            background: white;
+        }
+
+        .emailcontainer {
+            border: none;
+        }
+
+        .emailcontainer input,
+        .emailcontainer button,
+        button {
+            border: none;
+            padding: 2%;
+            border-radius: 10px;
+            background: purple;
+            color: white;
+        }
+
+        .emailcontainer input[placeholder] {
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="regtext genericstyle">
+    <div id="container">
+        <div id="header">
+            <div class="fifthhead box">
+                <p class="center">here is the logo</p>
+            </div>
+            <div class="fifthhead"></div>
+            <div class="fifthhead"></div>
+            <div class="fifthhead"></div>
+            <div class="fifthhead box">
+                <button class="center full regtext">Login</button>
+            </div>
+        </div>
+        <div id="body">
+            <!-- List Questions: 
+                How many employees do you have?
+                After the amount is answered have a box pop up with that amount 
+                ext 2 now we have 2 boxes under employee
+                List a department in your business
+                After you list a department it allows you to connect it with one of the employees
+                 which you can then add another department
+                 or click on the employee and add in info about employees
+                Name a training you have  
+                 -->
+            <select id="startselection">
+                <option selected disabled>Choose one</option>
+                <option value="Department">Department</option>
+                <option value="Employee">Employee</option>
+                <option value="Training">Training</option>
+            </select>
+
+            <div id="inputcontainer">
+                <div id="inputdepartment"></div>
+                <div id="inputemployee"></div>
+                <div id="inputtraining"></div>
+            </div>
+
+        </div>
+        <script src="index.js"></script>
+        <script>
+
+            // Array.prototype.has = function (num) {
+            //     for (let i = 0; i < this.length; i++) {
+            //         if (this[i] == num) return true
+            //     }
+            //     return false
+            // }
+            // let arr = [1, 2]
+            // console.log(arr.has(1) + "it should be true")
+            // console.log(arr.has(3) + "it should be false")
+
+
+            let functions = {
+                confirmLoad() {
+                    console.log("window has loaded")
+                    //this.functions = this.functions.bind(this);
+                },
+                styles() {
+                    document.getElementById("startselection").style.backgroundColor = "pink"
+                },
+                makeElement(el, attr, attrname, appendToId) {
+                    let element = document.createElement(el)
+                    element.setAttribute(attr, attrname)
+                    document.getElementById(appendToId).appendChild(element)
+                },
+                appendField(buttontext, placeholdertext) {
+                    document.querySelector("#inputcontainer").innerHTML = ""
+
+                    let el = document.createElement("div")
+                    let input = document.createElement("input")
+                    let button = document.createElement("button")
+
+                    input.setAttribute("id", "")
+                    input.setAttribute("placeholder", placeholdertext)
+                    button.innerHTML = buttontext
+                    button.setAttribute("id", "submitinfo")
+
+                    el.appendChild(input)
+                    el.appendChild(button)
+
+                    document.querySelector("#inputcontainer").appendChild(el)
+                },
+                listenersToAddInfo() {
+                    console.log("the value has changed")
+                    document.querySelector("#startselection").value === "Employee" ?
+                        functions.appendField("Add Employee", "Employee Name")
+                        : document.querySelector("#startselection").value === "Department" ?
+                            functions.appendField("Add Department", "Department")
+                            : document.querySelector("#startselection").value === "Training" ?
+                                functions.appendField("Add Training", "Training Name") : 0
+                },
+                addEvent(event, target, func) {
+                    target.addEventListener(event, function () {
+                        func()
+                    })
+                },
+                initListeners() {
+                    console.log(document.getElementById("submitinfo"))
+                    for (element in elements) {
+                        if (!(elements[element].selector == undefined)) {
+                            for (event in elements[element].events) {
+                                elements[element].events[event].forEach(function (item) {
+                                    functions.addEvent(event, elements[element].selector, item)
+                                })
+                            }
+                        }
+                    }
+                }
+            }
+            let Person = function (eyes, mouth, money) {
+                this.eyes = eyes
+                this.mouth = mouth
+                this.money = money
+            }
+
+            let tzvi = new Person(2, 4, 12000)
+            let raizel = nesw Person(3, 7, 1200)
+            console.log(tzvi.eyes)
+            console.log(raizel.eyes)
+
+            class Person2 {
+                constructor(eyes, mouth, money) {
+                    this.eyes = eyes
+                    this.mouth = mouth
+                    this.money = money
+                }
+            }
+
+
+            let tzvi2 = new Person2(7, 4, 12000)
+            let raizel2 = new Person2(10, 7, 1200)
+            console.log(tzvi2.eyes)
+            console.log(raizel2.eyes)
+
+            // Object.prototype.print = function () {
+            //     for (item in this) {
+            //         console.log(this[item])
+            //     }
+            // }
+
+            //functions.print()
+            let selectors = {}
+            let elements = {
+                firstInput: {
+                    selector: window,
+                    events: {
+                        "load": [
+                            functions.confirmLoad,
+                            functions.styles
+                        ]
+                    }
+                },
+                selection: {
+                    selector: document.getElementById("startselection"),
+                    events: {
+                        "change": [
+                            functions.listenersToAddInfo,
+                            functions.initListeners
+                        ]
+                    }
+                },
+                submitInfo: {
+                    selector: document.getElementById("submitinfo"),
+                    events: {
+                        "click": [
+                            function (e) {
+                                e.preventDefault()
+                                console.log("info added")
+                            }
+                        ]
+                    }
+                }
+            }
+
+            //append input and button with parameterized values
+            //Toggle fields depending on selection
+            //execution
+            functions.initListeners()
+            //design account dashboard
+            //users list
+        </script>
+</body>
+
+</html>

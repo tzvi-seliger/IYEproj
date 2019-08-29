@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        #select {
+            width: 100%;
+            height: 33%;
+        }
+
+        #hamburger {
+            height: 100%;
+        }
+
+        #root {
+            background: white;
+            color: black;
+        }
+
+        .header {
+            color: white;
+
+        }
+
+        #main-nav {
+            padding: 1%;
+            width: 10%;
+            height: 20%;
+
+
+        }
+
+        .vertical {
+            display: block;
+            padding: 4%;
+
+        }
+
+        .dropdownItem {
+            width: 100%;
+            height: 33%;
+            color: black;
+            font-family: Arial;
+            display: none;
+            padding: 4%;
+            background: white;
+            text-decoration-line: none;
+            text-decoration-color: none;
+            border: 1px solid black;
+            border-bottom: none;
+
+
+        }
+
+        .lastItem {
+            border-bottom: 1px solid black;
+
+        }
+
+        .dropdownItem:hover {
+            background: purple;
+            color: white;
+            font-family: cursive;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+
+        <nav id="main-nav">
+            <div class="header vertical" id="select">
+                <img src="hamburger.png" id="hamburger" />
+            </div>
+            <a href="index.html" class="vertical dropdownItem">Home</a>
+            <a href="pricing.html" class="vertical dropdownItem">Pricing</a>
+            <a href="account.html" class="vertical dropdownItem lastItem">Account</a>
+        </nav>
+    </div>
+
+    <script>
+        function disappear() {
+            document.querySelectorAll(".dropdownItem").forEach(function (item) {
+                item.style.display = "none"
+                document.querySelector("#select").innerHTML = `<img src="hamburger.png" id ="hamburger"/>`
+            })
+        }
+            document.getElementById("select").addEventListener("mouseenter", function () {
+                console.log("hello")
+                document.querySelectorAll(".dropdownItem").forEach(function (item) {
+                    item.style.display = "block"
+                })
+                document.querySelector("#select").innerHTML = `<img src="x.png" id ="hamburger"/>`
+            })
+            document.getElementById("main-nav").addEventListener("mouseleave", function () {
+                console.log("goodbye")
+                disappear()
+
+            })
+
+            document.getElementById("select").addEventListener("click", function () {
+                console.log("goodbye")
+                disappear()
+
+            })
+    </script>
+</body>
+
+</html>
